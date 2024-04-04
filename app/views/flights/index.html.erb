@@ -1,0 +1,40 @@
+<div class="search-form">
+  <%= form_with url: flights_path, method: :get do |f| %>
+    <div>
+      <%= f.label :departure_airport_id %>
+      <%= f.select :departure_airport_id, @airport_options %>
+    </div>
+    <div>
+      <%= f.label :arrival_airport_id %>
+      <%= f.select :arrival_airport_id, @airport_options %>
+    </div>
+    <div>
+      <%= f.label :passengers %>
+      <%= f.select :passengers, 1..4, selected: params[:passengers] %></br>
+    </div>
+    <div>
+      <%= f.label :date %>
+      <%= f.select :date, @dates_options%>
+    </div>
+
+    <%= f.submit :Search %>
+  <% end %>
+</div>
+
+
+<ul>
+  <% @flights.each do |flight| %>
+    <li>
+      <div>
+        Date: <%= flight.date.strftime('%d %B %Y  %H:%M') %>
+      </div>
+      <div>
+        Departure airport: <%= flight.departure_airport.name %>
+      </div>
+      <div>
+        Arrival airport: <%= flight.arrival_airport.name %>
+      </div>
+      <div>Duration : <%= flight.duration %> minutes</div>
+    </li>
+  <% end %>
+</ul>
