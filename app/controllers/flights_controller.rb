@@ -12,7 +12,7 @@ class FlightsController < ApplicationController
     if search?
       search_params[:passengers]
     else
-      0
+      1
     end
   end
 
