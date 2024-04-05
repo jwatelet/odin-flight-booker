@@ -1,0 +1,32 @@
+<h1>Booking</h1>
+<h2>Flight</h2>
+<div class="card">
+  <div class="field">
+    <p>
+      Date: <%= @booking.flight.date_formatted %>
+    </p>
+  </div>
+  <div class="field">
+    <p>Departure airport: <%= @booking.flight.departure_airport.name %></p>
+  </div>
+  <div class="field">
+    <p>
+      Arrival airport: <%= @booking.flight.arrival_airport.name %>
+    </p>
+  </div>
+  <div class="field">
+    <p>
+      Duration: <%= @booking.flight.duration %> min
+    </p>
+  </div>
+</div>
+<h2>Passengers</h2>
+<ul class="passengers">
+  <% @booking.passengers.each do |passenger| %>
+    <li>
+      <p><%= passenger.firstname %></p>
+      <p><%= passenger.lastname %></p>
+      <p><%= passenger.email %></p>
+    </li>
+  <% end %>
+</ul>

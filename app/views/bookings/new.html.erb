@@ -1,0 +1,33 @@
+<h1>New Booking</h1>
+
+
+<div class="errors">
+  <ul>
+    <% @booking.errors.full_messages.each do |message| %>
+    <li>
+      <%= message %>
+    </li>
+    <% end %>
+  </ul>  
+</div>
+
+<%= form_for @booking do |f| %>
+  <%= f.hidden_field :flight_id, value: @flight.id %>
+
+  <%= f.fields_for :passengers do |f_passenger| %>
+    <div class="field">
+      <%= f_passenger.label :firstname %>
+      <%= f_passenger.text_field :firstname %>
+    </div>
+    <div>
+      <%= f_passenger.label :lastname %>
+      <%= f_passenger.text_field :lastname %>
+    </div>
+    <div>
+      <%= f_passenger.label :email %>
+      <%= f_passenger.email_field :email %>
+    </div>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

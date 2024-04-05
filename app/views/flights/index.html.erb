@@ -21,28 +21,32 @@
   <% end %>
 </div>
   
-<%= form_with url: new_booking_path, method: :get  do |f| %>
-  <ul>
-    <% @flights.each do |flight| %>
-      <li>
-        <div>
-          <%= f.radio_button :selected_flight_id, flight.id %>
-        </div>
-        <div>
-          Date: <%= flight.date.strftime('%d %B %Y  %H:%M') %>
-        </div>
-        <div>
-          Departure airport: <%= flight.departure_airport.name %>
-        </div>
-        <div>
-          Arrival airport: <%= flight.arrival_airport.name %>
-        </div>
-        <div>
-          Duration : <%= flight.duration %> minutes
-        </div>
-      </li>
-    <% end %>
-  </ul>
-  <%= f.hidden_field :passengers, value: @passengers %>
-  <%= f.submit :Book %>
+
+
+<% if @flights %>
+  <%= form_with url: new_booking_path, method: :get  do |f| %>
+    <ul>
+      <% @flights.each do |flight| %>
+        <li>
+          <div>
+            <%= f.radio_button :flight_id, flight.id %>
+          </div>
+          <div>
+            Date: <%= flight.date.strftime('%d %B %Y  %H:%M') %>
+          </div>
+          <div>
+            Departure airport: <%= flight.departure_airport.name %>
+          </div>
+          <div>
+            Arrival airport: <%= flight.arrival_airport.name %>
+          </div>
+          <div>
+            Duration : <%= flight.duration %> minutes
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <%= f.hidden_field :passengers, value: @passengers %>
+    <%= f.submit :Book %>
+  <% end %>
 <% end %>
