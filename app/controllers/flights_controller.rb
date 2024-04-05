@@ -25,7 +25,7 @@ class FlightsController < ApplicationController
             )
             .where(date: search_params[:date])
     else
-      Flight.all.includes(:arrival_airport, :departure_airport)
+      []
     end
   end
 
