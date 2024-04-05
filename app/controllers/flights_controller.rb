@@ -2,7 +2,7 @@ class FlightsController < ApplicationController
   def index
     @flights = set_flights
     @passengers = set_passengers
-    @dates_options = Flight.all.map { |flight| [flight.date_formatted, flight.date] }.uniq
+    @dates_options = Flight.all.order(:date).map { |flight| [flight.date_formatted, flight.date] }.uniq
     @airport_options = Airport.pluck(:name, :id)
   end
 
@@ -17,14 +17,16 @@ class FlightsController < ApplicationController
   end
 
   def set_flights
-    return unless search?
-
-    Flight.all.includes(:arrival_airport, :departure_airport)
-          .where(
-            arrival_airport_id: search_params[:arrival_airport_id],
-            departure_airport_id: search_params[:departure_airport_id]
-          )
-          .where(date: search_params[:date])
+    if search?
+      Flight.all.includes(:arrival_airport, :departure_airport)
+            .where(
+              arrival_airport_id: search_params[:arrival_airport_id],
+              departure_airport_id: search_params[:departure_airport_id]
+            )
+            .where(date: search_params[:date])
+    else
+      []
+    end
   end
 
   def search?

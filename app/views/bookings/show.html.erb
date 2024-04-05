@@ -2,31 +2,52 @@
 <h2>Flight</h2>
 <div class="card">
   <div class="field">
+    <h3>
+      Date
+    </h3>
     <p>
-      Date: <%= @booking.flight.date_formatted %>
+      <%= @booking.flight.date_formatted %>
     </p>
   </div>
   <div class="field">
-    <p>Departure airport: <%= @booking.flight.departure_airport.name %></p>
-  </div>
-  <div class="field">
+    <h3>
+      Departure airport
+    </h3>
     <p>
-      Arrival airport: <%= @booking.flight.arrival_airport.name %>
+      <%= @booking.flight.departure_airport.name %>
     </p>
   </div>
   <div class="field">
+    <h3>
+      Arrival airport
+    </h3>
     <p>
-      Duration: <%= @booking.flight.duration %> min
+      <%= @booking.flight.arrival_airport.name %>
+    </p>
+  </div>
+  <div class="field">
+    <h3>
+      Duration
+    </h3>
+    <p>
+      <%= @booking.flight.duration %> min
     </p>
   </div>
 </div>
 <h2>Passengers</h2>
 <ul class="passengers">
   <% @booking.passengers.each do |passenger| %>
-    <li>
-      <p><%= passenger.firstname %></p>
-      <p><%= passenger.lastname %></p>
-      <p><%= passenger.email %></p>
+    <li class="card">
+      <div class="field">
+        <h3>Name</h3>
+        <span><%= passenger.firstname %></span>
+        <span><%= passenger.lastname %></span>
+      </div>
+      
+      <div class="field">
+        <h3>Email</h3>
+        <p><%= passenger.email %></p>
+      </div>
     </li>
   <% end %>
 </ul>

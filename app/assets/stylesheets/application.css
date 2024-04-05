@@ -13,3 +13,111 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+ * {
+  margin: 0;
+  padding: 0;
+ }
+
+ :root {
+  --main: #3b82f6;
+  --secondary: #cbd5e1;
+  --background: #9ca3af;
+  --error: #f87171;
+  --margin: 20px;
+  --padding: 20px;
+  --border-radius: 25px;
+  --button-padding-top: 10px;
+  --button-padding-right: 25px;
+ }
+
+body {
+  background-color: var(--background);
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* errors */
+
+.errors {
+  padding: var(--padding);
+  margin: var(--margin);
+  background-color: var(--error);
+  border-radius: var(--border-radius);
+}
+
+/* form */
+
+.form{
+  display: flex;
+  padding: var(--padding);
+  margin: var(--margin);
+  background-color: var(--secondary);
+  border-radius: var(--border-radius);
+}
+
+.form .field {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.form input[type="submit"] {
+  border: none;
+  padding: var(--button-padding-top) var(--button-padding-right);
+  border-radius: var(--border-radius);
+  background-color: var(--main);
+  color: var(--secondary);
+}
+
+.form select {
+  border: none;
+  padding: var(--button-padding-top) var(--button-padding-right);
+  border-radius: var(--border-radius);
+  background-color: var(--main);
+  color: var(--secondary);
+}
+
+.form label {
+  margin-bottom: 5px;
+}
+
+.form .actions {
+  display: flex;
+  justify-content: center;
+}
+
+.form ul {
+  list-style: none;
+}
+
+/* card */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding);
+  margin: var(--margin);
+  background-color: var(--secondary);
+  border-radius: var(--border-radius);
+}
+
+.card .field {
+  margin: 5px;
+}
+
+/* flight */
+
+.flight-select-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

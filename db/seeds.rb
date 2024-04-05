@@ -23,7 +23,7 @@ airports.each do |departure_airport|
 
     5.times do
       duration = rand(20..720)
-      date = (Time.now + rand(0.10)).strftime("%d-%m-%Y")
+      date = (Time.now + rand(0..3).days).strftime("%d-%m-%Y")
       Flight.create(departure_airport:, arrival_airport:, duration:, date:)
     end
   end

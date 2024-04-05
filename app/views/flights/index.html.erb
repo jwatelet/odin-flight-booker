@@ -1,50 +1,57 @@
-<div class="search-form">
+<div class="form">
   <%= form_with url: flights_path, method: :get do |f| %>
-    <div>
+    <div class="field">
       <%= f.label :departure_airport_id %>
       <%= f.select :departure_airport_id, @airport_options %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :arrival_airport_id %>
       <%= f.select :arrival_airport_id, @airport_options %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :passengers %>
-      <%= f.select :passengers, 1..4, selected: params[:passengers] %></br>
+      <%= f.select :passengers, 1..4, selected: params[:passengers] %>
     </div>
-    <div>
+    <div class="field">
       <%= f.label :date %>
       <%= f.select :date, @dates_options%>
     </div>
-
-    <%= f.submit :Search %>
+    <div class="actions">
+      <%= f.submit :Search %>
+    </div>
   <% end %>
 </div>
   
-<% if @flights %>
-  <%= form_with url: new_booking_path, method: :get  do |f| %>
-    <ul>
-      <% @flights.each do |flight| %>
-        <li>
-          <div>
-            <%= f.radio_button :flight_id, flight.id %>
-          </div>
-          <div>
-            Date: <%= flight.date.strftime('%d %B %Y  %H:%M') %>
-          </div>
-          <div>
-            Departure airport: <%= flight.departure_airport.name %>
-          </div>
-          <div>
-            Arrival airport: <%= flight.arrival_airport.name %>
-          </div>
-          <div>
-            Duration : <%= flight.duration %> minutes
-          </div>
-        </li>
-      <% end %>
-    </ul>
-    <%= f.hidden_field :passengers, value: @passengers %>
-    <%= f.submit :Book %>
-  <% end %>
+<% unless @flights.empty? %>
+  <div class="form">
+    <%= form_with url: new_booking_path, method: :get  do |f| %>
+      <ul>
+        <% @flights.each do |flight| %>
+          <li class="flight-select-row">
+            <div class="radio">
+              <%= f.radio_button :flight_id, flight.id %>
+            </div>
+            <div class="field">
+              <div>
+                Date: <%= flight.date.strftime('%d %B %Y  %H:%M') %>
+              </div>
+              <div>
+                Departure airport: <%= flight.departure_airport.name %>
+              </div>
+              <div>
+                Arrival airport: <%= flight.arrival_airport.name %>
+              </div>
+              <div>
+                Duration : <%= flight.duration %> minutes
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      <%= f.hidden_field :passengers, value: @passengers %>
+      <div class="actions">
+        <%= f.submit :Book %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
