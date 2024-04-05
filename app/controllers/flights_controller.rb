@@ -17,16 +17,14 @@ class FlightsController < ApplicationController
   end
 
   def set_flights
-    if search?
-      Flight.all.includes(:arrival_airport, :departure_airport)
-            .where(
-              arrival_airport_id: search_params[:arrival_airport_id],
-              departure_airport_id: search_params[:departure_airport_id]
-            )
-            .where(date: search_params[:date])
-    else
-      []
-    end
+    return unless search?
+
+    Flight.all.includes(:arrival_airport, :departure_airport)
+          .where(
+            arrival_airport_id: search_params[:arrival_airport_id],
+            departure_airport_id: search_params[:departure_airport_id]
+          )
+          .where(date: search_params[:date])
   end
 
   def search?
