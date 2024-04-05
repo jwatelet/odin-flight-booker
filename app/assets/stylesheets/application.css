@@ -38,6 +38,42 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+/* grid */
+
+.grid {
+  display: grid;
+  grid-template-rows: 70px 4fr 50px;
+  min-height: 100vh;
+}
+
+/* header */
+
+header {
+  grid-row: 1 / 2;
+  display: flex;
+  background-color: var(--main);
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding);
+}
+
+header a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+/* footer */
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 3 / 4;
+}
+
+/* container */
+
 .container {
   display: flex;
   flex-direction: column;
