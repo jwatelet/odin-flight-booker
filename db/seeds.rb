@@ -15,14 +15,16 @@ ord_airport = Airport.create(code: 'ORD', name: 'O\'Hare International Airport')
 jfk_airport = Airport.create(code: 'JFK', name: 'John F. Kennedy International Airport')
 mia_airport = Airport.create(code: 'MIA', name: 'Miami International Airport')
 
-Flight.create(departure_airport: atl_airport, arrival_airport: dfw_airport, duration: 240, date: Date.strptime("30-04-2024", "%d-%m-%Y"))
-Flight.create(departure_airport: atl_airport, arrival_airport: den_airport, duration: 420, date: Date.strptime("01-05-2024", "%d-%m-%Y"))
+airports = [atl_airport, dfw_airport, den_airport, ord_airport, jfk_airport, mia_airport]
 
-Flight.create(departure_airport: dfw_airport, arrival_airport: atl_airport, duration: 240, date: Date.strptime("02-05-2024", "%d-%m-%Y"))
-Flight.create(departure_airport: dfw_airport, arrival_airport: ord_airport, duration: 87, date: Date.strptime("03-05-2024", "%d-%m-%Y"))
+airports.each do |departure_airport|
+  airports.each do |arrival_airport|
+    next unless departure_airport != arrival_airport
 
-Flight.create(departure_airport: jfk_airport, arrival_airport: ord_airport, duration: 356, date: Date.strptime("04-05-2024", "%d-%m-%Y"))
-Flight.create(departure_airport: jfk_airport, arrival_airport: mia_airport, duration: 478, date: Date.strptime("05-05-2024", "%d-%m-%Y"))
-
-Flight.create(departure_airport: mia_airport, arrival_airport: atl_airport, duration: 480, date: Date.strptime("06-05-2024", "%d-%m-%Y"))
-Flight.create(departure_airport: mia_airport, arrival_airport: jfk_airport, duration: 76, date: Date.strptime("06-05-2024", "%d-%m-%Y"))
+    5.times do
+      duration = rand(20..720)
+      date = (Time.now + rand(0.10)).strftime("%d-%m-%Y")
+      Flight.create(departure_airport:, arrival_airport:, duration:, date:)
+    end
+  end
+end
