@@ -31,20 +31,22 @@
             <div class="radio">
               <%= f.radio_button :flight_id, flight.id %>
             </div>
-            <div class="field">
-              <div>
-                Date: <%= flight.date.strftime('%d %B %Y  %H:%M') %>
+            <label for="flight_id">
+              <div class="field">
+                <div>
+                  Date: <%= flight.date.strftime('%d %B %Y  %H:%M') %>
+                </div>
+                <div>
+                  Departure airport: <%= flight.departure_airport.name %>
+                </div>
+                <div>
+                  Arrival airport: <%= flight.arrival_airport.name %>
+                </div>
+                <div>
+                  Duration : <%= flight.duration %> minutes
+                </div>
               </div>
-              <div>
-                Departure airport: <%= flight.departure_airport.name %>
-              </div>
-              <div>
-                Arrival airport: <%= flight.arrival_airport.name %>
-              </div>
-              <div>
-                Duration : <%= flight.duration %> minutes
-              </div>
-            </div>
+            </label>
           </li>
         <% end %>
       </ul>

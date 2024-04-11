@@ -15,28 +15,65 @@
 <% end %>
 
 
-<div class="form">
-  <% i = 1 %>
-  <%= form_for @booking do |f| %>
+<div class="form" data-controller="passengers">
+  <%= form_for(@booking) do |f| %>
     <%= f.hidden_field :flight_id, value: @flight.id %>
   
-    <%= f.fields_for :passengers do |f_passenger| %>
-      <h4>Passenger <%= i %>: </h4>
-      <div class="field">
-        <%= f_passenger.label :firstname %>
-        <%= f_passenger.text_field :firstname %>
-      </div>
-      <div class="field">
-        <%= f_passenger.label :lastname %>
-        <%= f_passenger.text_field :lastname %>
-      </div>
-      <div class="field">
-        <%= f_passenger.label :email %>
-        <%= f_passenger.email_field :email %>
-      </div>
-      <% i = i+1 %>
-    <% end %>
-  
-    <div class="actions"><%= f.submit %></div>
+    <div class="passengers">
+      <ul data-passengers-target="list">
+        <%= f.fields_for(:passengers) do |f_passenger| %>
+          <li class="passenger" data-passengers-target="passenger" >
+            <h4>Passenger</h4>
+            <div class="field">
+              <%= f_passenger.label :firstname %>
+              <%= f_passenger.text_field :firstname %>
+            </div>
+            <div class="field">
+              <%= f_passenger.label :lastname %>
+              <%= f_passenger.text_field :lastname %>
+            </div>
+            <div class="field">
+              <%= f_passenger.label :email %>
+              <%= f_passenger.email_field :email %>
+            </div>
+            <div class="field">
+              <a class="remove" data-action="click->passengers#remove">
+                <%= image_tag 'account-remove.svg' %>
+              </a>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <template data-passengers-target="template">
+      <%= f.fields_for(:passengers, @booking.passengers.new) do |f_passenger| %>
+        <li class="passenger" data-passengers-target="passenger" >
+          <h4>Passenger</h4>
+          <div class="field">
+            <%= f_passenger.label :firstname %>
+            <%= f_passenger.text_field :firstname %>
+          </div>
+          <div class="field">
+            <%= f_passenger.label :lastname %>
+            <%= f_passenger.text_field :lastname %>
+          </div>
+          <div class="field">
+            <%= f_passenger.label :email %>
+            <%= f_passenger.email_field :email %>
+          </div>
+          <div class="field">
+            <a class="remove" data-action="click->passengers#remove">
+              <%= image_tag 'account-remove.svg' %>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </template>
+    <div class="actions">
+      <%= f.submit class: "submit"%>
+      <a class="add" data-action="click->passengers#add">
+        <%= image_tag 'account-plus.svg' %>
+      </a>
+    </div>
   <% end %>
 </div>

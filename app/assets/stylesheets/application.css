@@ -27,6 +27,7 @@
   --secondary: #cbd5e1;
   --background: #9ca3af;
   --error: #f87171;
+  --sucess: #10b981;
   --margin: 20px;
   --padding: 20px;
   --border-radius: 25px;
@@ -66,7 +67,7 @@ header .home {
 }
 
 header a {
-  color: var(--secondary);
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -123,7 +124,7 @@ footer {
   padding: var(--button-padding-top) var(--button-padding-right);
   border-radius: var(--border-radius);
   background-color: var(--main);
-  color: var(--secondary);
+  color: var(--white);
 }
 
 .form select {
@@ -131,7 +132,7 @@ footer {
   padding: var(--button-padding-top) var(--button-padding-right);
   border-radius: var(--border-radius);
   background-color: var(--main);
-  color: var(--secondary);
+  color: var(--white);
 }
 
 .form label {
@@ -140,7 +141,8 @@ footer {
 
 .form .actions {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .form ul {
@@ -168,4 +170,51 @@ footer {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+/* booking */
+
+.passengers ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.actions .submit {
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.actions .add {
+  background-color: var(--sucess);
+  border: none;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  align-items: center;
+}
+
+.add img {
+  height: 2rem;
+}
+
+.passenger .remove {
+  background-color: var(--error);
+  border: none;
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  align-self: center;
+}
+
+
+
+.passenger .remove:hover, .add:hover {
+  cursor: pointer;
+}
+
+.passenger img {
+  height: 2rem;
 }
