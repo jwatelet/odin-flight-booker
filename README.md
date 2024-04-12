@@ -13,14 +13,13 @@ This project will require you to seed your database, so use your db/seeds.rb fil
   3. Enter passenger information for all passengers
   4.  Enter billing information
 
-
 ### Getting started
 
 - Clone this repo
 - install ruby (3.2.3)
 - install all gems:  `bundle install`
 - migrate the database : `rails db:migrate`
-- seed the database, (check the file `seed.rb` to check what it's done): `rails db:seed:plant`
+- seed the database, (`seed.rb` to check what it's done): `rails db:seed:plant`
 - launch server : `rails s`
 
 ### Comments
