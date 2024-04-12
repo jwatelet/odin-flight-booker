@@ -12,6 +12,6 @@
   </div>
 <% end %>
 
-<%= turbo_frame_tag "new_booking" do %>
+<%= turbo_frame_tag "new_booking", target: "_top" do %>
   <%= render 'form', booking: @booking %>
 <% end %>
