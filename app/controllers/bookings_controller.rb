@@ -2,8 +2,9 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @passengers_num = set_passenger_num
+    puts "passengers_num #{@passengers_num}"
     @flight = Flight.find(selected_flight_params[:flight_id])
-    @passengers_num.times { @booking.passengers.build }
+    @passengers_num.times { @booking.passengers.new }
   end
 
   def show
@@ -24,10 +25,14 @@ class BookingsController < ApplicationController
   private
 
   def set_passenger_num
-    if selected_flight_params[:passengers].to_i <= 4
-      selected_flight_params[:passengers].to_i
-    else
+    num = selected_flight_params[:passengers].to_i
+    puts "num: #{num}"
+    if num < 1 || num.nil?
       1
+    elsif num <= 4
+      num
+    elsif num > 4
+      4
     end
   end
 
