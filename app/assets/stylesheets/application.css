@@ -112,6 +112,10 @@ footer {
   border-radius: var(--border-radius);
 }
 
+.form .values {
+  margin: 0 10px;
+}
+
 .form .field {
   display: flex;
   flex-direction: column;
@@ -149,6 +153,10 @@ footer {
   list-style: none;
 }
 
+.form .book-actions {
+  justify-content: center;
+}
+
 /* card */
 
 .card {
@@ -166,11 +174,27 @@ footer {
 
 /* flight */
 
-.flight-select-row {
+.flight-select-card {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
+.infos {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10px;
+}
+
+.infos .labels, .values {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.infos .label, values {
+  padding: 5px;
+} 
 
 /* booking */
 
@@ -208,8 +232,6 @@ footer {
   width: 80px;
   align-self: center;
 }
-
-
 
 .passenger .remove:hover, .add:hover {
   cursor: pointer;
