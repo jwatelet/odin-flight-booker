@@ -1,0 +1,14 @@
+Hello <%= @passenger.fullname %>
+
+We confirm your booking for:
+
+Date: <%= @flight.date.strftime('%d %B %Y  %H:%M') %>
+
+-  Departure airport : <%= @flight.departure_airport.name %>
+-  Arrival airport : <%= @flight.arrival_airport.name %>
+
+Duration: <%= @flight.duration %> min
+
+You could retrieve all the booking information <%= link_to 'Here', url_for(@passenger.booking) %>  %>
+
+Have a nice day !

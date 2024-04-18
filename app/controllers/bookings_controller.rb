@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     if @booking.save
+      send_email_to_passengers(@booking)
       redirect_to @booking
     else
       @flight = Flight.find(booking_params[:flight_id])
@@ -22,6 +23,12 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def send_email_to_passengers(booking)
+    booking.passengers.each do |passenger|
+      PassengerMailer.confirmation_email(passenger).deliver_now
+    end
+  end
 
   def set_passenger_num
     num = selected_flight_params[:passengers].to_i

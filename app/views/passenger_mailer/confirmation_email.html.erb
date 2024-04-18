@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Hello <%= @passenger.fullname %></h1>
+  <p>
+    We confirm your booking for:
+  </p>
+  <h3>Date: <%= @flight.date.strftime('%d %B %Y  %H:%M') %></h3>
+  <ul>
+    <li>
+      Departure airport : <%= @flight.departure_airport.name %>
+    </li>
+    <li>
+      Arrival airport : <%= @flight.arrival_airport.name %>
+    </li>
+  </ul>
+  <p>Duration: <%= @flight.duration %> min</p>
+  <p>You could retrieve all the booking information <%= link_to 'Here', url_for(@passenger.booking) %> </p>
+
+  <p>Have a nice day !</p>
+</body>
+</html>
