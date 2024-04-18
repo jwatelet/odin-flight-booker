@@ -60,6 +60,7 @@ group :development do
   # gem "spring"
   gem "rubocop", "~> 1.62"
   gem "rubocop-rails", "~> 2.24"
+  gem "ruby-lsp", "~> 0.16.4"
   gem "solargraph", "~> 0.50.0"
 end
 
